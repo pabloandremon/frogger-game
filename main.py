@@ -7,7 +7,7 @@ win.setBackground('Black')
 #drawing the player here
 
 #Register the player
-win.Image("Frog.gif")
+frog = win.Image("Frog.gif")
 win.Image("Car_left.gif")
 win.Image("Car_right.gif")
 
@@ -42,7 +42,7 @@ class Player(Stuff):
     def left(self):
         self.x -= 40
 
-class Car(Stuff):
+class Car():
     def __init__(self, x, y, width, height, image, dx):
         Stuff.__init__(self, x, y, width, height, image)
         self.dx = dx
