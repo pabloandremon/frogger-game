@@ -2,6 +2,7 @@ from graphics import *
 
 #Settings for the screen
 win = GraphWin("Frogger", 500, 700, autoflush=True)
+win.setBackground('black')
 
 #xadi testing motion
 car_right = []
@@ -9,7 +10,7 @@ for x in [-1, 1]:
     for y in [-1,1]:
         circle = Circle(Point(250, 250), 20)
         circle.draw(win)
-        circle.append((circle, (x, y)))
+        #circle.append((circle, (x, y)))
 
 for _ in range(250):
     for circle, (x, y) in car_right:
@@ -18,11 +19,11 @@ for _ in range(250):
 
 #Register the player
 #drawing the player here
-frog_img = Image(Point(200, 600) ,"Frog.gif")
+frog_img = Image(Point(200, 600) ,"frog.gif")
 frog_img.draw(win)
-carL_img = Image(Point(100, 500),"Car_left.gif")
+carL_img = Image(Point(100, 500),"car_left.gif")
 carL_img.draw(win)
-carR_img = Image(Point(50, 400), "Car_right.gif")
+carR_img = Image(Point(50, 400), "car_right.gif")
 carR_img.draw(win)
 
 #Creating the parent class
@@ -67,3 +68,4 @@ class Player:
 
 #if frog_point == car_point
 #frog dead 
+win.getMouse()
