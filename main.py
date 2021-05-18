@@ -17,11 +17,6 @@ for _ in range(250):
 
 
 #Register the player
-<<<<<<< HEAD
-frog = win.Image("Frog.gif")
-win.Image("Car_left.gif")
-win.Image("Car_right.gif")
-=======
 #drawing the player here
 frog_img = Image(Point(200, 600) ,"Frog.gif")
 frog_img.draw(win)
@@ -29,9 +24,8 @@ carL_img = Image(Point(100, 500),"Car_left.gif")
 carL_img.draw(win)
 carR_img = Image(Point(50, 400), "Car_right.gif")
 carR_img.draw(win)
->>>>>>> 83737b258d4bfecc6ff60d2fe11daef84a2176a3
 
-Creating the parent class
+#Creating the parent class
 class Stuff():
     def __init__(self, x, y, width, height, image):
         self.x = x
@@ -46,27 +40,11 @@ class Stuff():
         pen.update()
 
 
-<<<<<<< HEAD
-class Car():
-    def __init__(self, x, y, width, height, image, dx):
-        Stuff.__init__(self, x, y, width, height, image)
-        self.dx = dx
-
-    def update(self):
-        self.x += self.dx
-        #Check borders of the game windows
-        if self.x < -400:
-            self.x = 400
-        
-        if self.x > 400:
-            self.x = -400
-=======
 #Creating the child class
 class Player:
     def __init__(self):
         self.frog_img = char
         self.win = window
->>>>>>> 83737b258d4bfecc6ff60d2fe11daef84a2176a3
 
 #Creating the objects 1
     def create(self):
