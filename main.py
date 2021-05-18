@@ -10,7 +10,7 @@ for x in [-1, 1]:
     for y in [-1,1]:
         circle = Circle(Point(250, 250), 20)
         circle.draw(win)
-        #circle.append((circle, (x, y)))
+        car_right.append((circle, (x, y)))
 
 for _ in range(250):
     for circle, (x, y) in car_right:
@@ -63,9 +63,28 @@ class Player:
         if self.win.lastKey == "w":
             self.p1.move(0, -40)
 
+class Enemy(object):
+    def __init__(self, speed, startXpos, startYpos):
+        self.speed = speed
+        self.x = startXpos
+        self.y = startYpos
 
-#Creating the objects 2
+        self.graphic = Image(Point(startXpos, startYpos), "Car_left.gif")
+        self.graphic.draw(win)
+
+    def move(self):
+        self.x += self.speed
+        self.graphic.move(self.speed, 0)
+
+myEnemies = [Enemy(40, 50, 100), Enemy(50, 50, 200), Enemy(60, 50, 300)]
+
+for i in range(40):  # main animation loop
+    for enemy in myEnemies:  # loop through the enemy list
+        enemy.move()
+        time.sleep(1)  # wait a second...
+
+
+win.getMouse()
 
 #if frog_point == car_point
 #frog dead 
-win.getMouse()
