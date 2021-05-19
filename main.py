@@ -31,6 +31,12 @@ class Enemy(object):
         self.x += self.speed
         self.graphic.move(self.speed, 0)
 
+    #new:
+    # function return center of enemy
+    def center(self):
+        return self.graphic.getCenter() 
+
+
 
 myEnemies = [Enemy(30, 30, 500), Enemy(30, 140, 500)]
 #if car reaches position 500, 500
