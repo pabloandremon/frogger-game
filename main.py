@@ -9,26 +9,48 @@ win.setBackground('black')
 class Player(object):
     def __init__(self, startX, startY):
         self.x = startX
-        self.y = startY
+        self.y = startY       
 
         self.frog = Image(Point(startX, startY), "frog.gif")
         self.frog.draw(win)
     
       #Keyboard binding
     def Movement(self):
-        if self.win.keys.get("d"):
-            self.frog.move(50, 0)
-        if self.win.keys.get("a"):
-            self.frog.move(-50, 0)
-        if self.win.keys.get("s"):
-            self.frog.move(0, 50)
-        if self.win.keys.get("w"):
-            self.frog.move(0, -50)
         
-  
+        keyString = win.getKey()
 
-#spawn player at 250, 650
-player_spawn = [Player(250, 650)]
+        #win.getKey()
+        #self.key = win.checkKey
+        if keyString == "d":
+            #self.frog.undraw()
+            #self.frog = Image(Point(self.x+50, self.y), "frog.gif")
+            #self.frog.draw(win)
+            self.frog.move(50, 0)
+            return keyString
+        elif keyString == "a":
+            #self.frog.undraw()
+            #self.frog = Image(Point(self.x-50, self.y), "frog.gif")
+            #self.frog.draw(win)
+            self.frog.move(-50, 0)
+            return keyString
+        while keyString == "s":
+            #self.frog.undraw()
+            #self.frog = Image(Point(self.x, self.y-50), "frog.gif")
+            #self.frog.draw(win)
+            self.frog.move(0, 50)
+            return keyString
+        while keyString == "w":
+            #self.frog.undraw()
+            #self.frog = Image(Point(self.x, self.y+50), "frog.gif")
+            #self.frog.draw(win)
+            self.frog.move(0, -35)
+            return keyString
+        while keyString == "space":
+            #self.frog.undraw()
+            #self.frog = Image(Point(self.x, self.y+50), "frog.gif")
+            #self.frog.draw(win)            
+            return win.close()
+            break       
 
         
 #Enemy that moves created here
@@ -48,51 +70,50 @@ class Enemy(object):
         self.x += self.speed
         self.car_right.move(self.speed, 0)
 
-    def limit_position(self):
-        self.position = Point(500, 600)
-        return self.position
-            
+#method that returns the limit position of the car (cannot pass possition x == 500)
+    #def limit_position(self):
+        #self.position = Point(500, 600)
+        #return self.position           
 
 
     #create a method to get the center of the Enemy object.    
 
      
 
-#Print enemy on different road lanes  
-enemy_line1 = [Enemy(30, 10, 600)]
-enemy_line2 = [Enemy(30, 60, 560), Enemy(30, 200, 560)]
-enemy_line3 = [Enemy(30, 140, 520), Enemy(30, 250, 520), Enemy(30, 400, 520)]
 
 
-#Enemy animation
-for i in range(1000):  # main animation loop
+def main():
+
+        #spawn player at 250, 650
+    player_spawn = Player(250, 650)
+
+    for i in range(1000):
+        player_spawn.Movement()
+        update(30)
+
+    #Print enemy on different road lanes  
+    enemy_line1 = [Enemy(30, 10, 600)]
+    enemy_line2 = [Enemy(30, 60, 560), Enemy(30, 200, 560)]
+    enemy_line3 = [Enemy(30, 140, 520), Enemy(30, 250, 520), Enemy(30, 400, 520)]
+
+
+    #Enemy animation
+    for i in range(1000):  # main animation loop
+        for enemy in enemy_line1:  # loop through the enemy list
+            enemy.move()
+            time.sleep(1)  # wait a second...
+
+        for enemy in enemy_line2:  
+            enemy.move()
+            time.sleep(1)  
+
+        for enemy in enemy_line3:  
+            enemy.move()
+            time.sleep(1)  
+
     
-    for enemy in enemy_line1:  # loop through the enemy list
-        enemy.move()
-        time.sleep(1)  # wait a second...
-        #if car reaches position 500, 500
-        #then undraw car and reset position
-        if(enemy_line1[0].p == enemy.limit_position()): #In progress, still does not work      
-            for enemy in enemy_line1:  # loop through the enemy list again
-                enemy.move()
-                time.sleep(1)
-    
-    for enemy in enemy_line2:  
-        enemy.move()
-        time.sleep(1)  
-    
-    for enemy in enemy_line3:  
-        enemy.move()
-        time.sleep(1)  
+main()
 
-while not win.isClosed():
-    player_spawn.move()
-    win.update()
-    time.sleep(.1)
-
-
-
-win.close()
 
 #TO-DO LIST:    
 #if frog_point == car_point
