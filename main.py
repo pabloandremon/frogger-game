@@ -2,7 +2,7 @@ from graphics import *
 
 
 #Settings for the screen
-win = GraphWin("Frogger", 500, 700, autoflush=True)
+win = GraphWin("Frogger", 500, 700, autoflush=False)
 win.setBackground('black')
 
 #Player Class
@@ -15,40 +15,29 @@ class Player(object):
         self.frog.draw(win)
     
       #Keyboard binding
-    def Movement(self):
+    def movement(self):
         
         keyString = win.getKey()
 
         #win.getKey()
         #self.key = win.checkKey
-        if keyString == "d":
-            #self.frog.undraw()
-            #self.frog = Image(Point(self.x+50, self.y), "frog.gif")
-            #self.frog.draw(win)
+        if keyString == "d":            
             self.frog.move(50, 0)
             return keyString
+
         elif keyString == "a":
-            #self.frog.undraw()
-            #self.frog = Image(Point(self.x-50, self.y), "frog.gif")
-            #self.frog.draw(win)
             self.frog.move(-50, 0)
             return keyString
-        while keyString == "s":
-            #self.frog.undraw()
-            #self.frog = Image(Point(self.x, self.y-50), "frog.gif")
-            #self.frog.draw(win)
+
+        while keyString == "s":            
             self.frog.move(0, 50)
             return keyString
-        while keyString == "w":
-            #self.frog.undraw()
-            #self.frog = Image(Point(self.x, self.y+50), "frog.gif")
-            #self.frog.draw(win)
+
+        while keyString == "w":            
             self.frog.move(0, -35)
             return keyString
-        while keyString == "space":
-            #self.frog.undraw()
-            #self.frog = Image(Point(self.x, self.y+50), "frog.gif")
-            #self.frog.draw(win)            
+
+        while keyString == "space":                     
             return win.close()
             break       
 
@@ -78,27 +67,40 @@ class Enemy(object):
 
     #create a method to get the center of the Enemy object.    
 
+#def Enemy_loop():
+    #Print enemy on different road lanes  
+    #enemy_line1 = [Enemy(30, 10, 600)]
+    #enemy_line2 = [Enemy(30, 60, 560), Enemy(30, 200, 560)]
+    #enemy_line3 = [Enemy(30, 140, 520), Enemy(30, 250, 520), Enemy(30, 400, 520)]
+
+
+    #Enemy animation
+    #for i in range(1000):  # main animation loop
+        #for enemy in enemy_line1:  # loop through the enemy list
+            #enemy.move()
+            #time.sleep(1)  # wait a second...
+
+        #for enemy in enemy_line2:  
+            #enemy.move()
+            #time.sleep(1)  
+
+        #for enemy in enemy_line3:  
+            #enemy.move()
+            #time.sleep(1)
      
 
 
 
 def main():
 
-        #spawn player at 250, 650
-    player_spawn = Player(250, 650)
-
-    for i in range(1000):
-        player_spawn.Movement()
-        update(30)
-
-    #Print enemy on different road lanes  
     enemy_line1 = [Enemy(30, 10, 600)]
     enemy_line2 = [Enemy(30, 60, 560), Enemy(30, 200, 560)]
     enemy_line3 = [Enemy(30, 140, 520), Enemy(30, 250, 520), Enemy(30, 400, 520)]
+        #spawn player at 250, 650
+    player_spawn = Player(250, 650)
+    
+    while True:
 
-
-    #Enemy animation
-    for i in range(1000):  # main animation loop
         for enemy in enemy_line1:  # loop through the enemy list
             enemy.move()
             time.sleep(1)  # wait a second...
@@ -109,9 +111,11 @@ def main():
 
         for enemy in enemy_line3:  
             enemy.move()
-            time.sleep(1)  
+            time.sleep(1)
 
-    
+        player_spawn.movement()
+        update(60)
+
 main()
 
 
