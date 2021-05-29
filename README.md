@@ -1,0 +1,4 @@
+# Proyect.02
+## Frogger
+
+As we were instructed on this course the final project is a frogger game (the retro version), this project was very challenging due to only being able to use the module of Graphics.py, this module was very limited for the process of making this to work. It is relatively simple game but once you get to the coding part you can quickly see how complex it gets with the graphics module created by John Zelle. It was a fun experience, sharing code, using Github and finally see the python language as first-hand, we can both say confidently that we learned a lot writing python code in this course especially writing GUIs.

@@ -28,7 +28,7 @@ class EnemyTracker:
         #second car:
         self.proj2 = Enemy(velocity = 67, height = 500)
         self.marker2 = Image(Point(-100, 500), 'car_right.gif') 
-        self.marker2.draw(win)
+        self.marker2.draw(win)        
 
         self.proj3 = Enemy(velocity = 53, height = 115)
         self.marker3 = Image(Point(-100, 115), 'wood.gif') 
@@ -37,6 +37,10 @@ class EnemyTracker:
         self.proj4 = Enemy(velocity = 67, height = 150)
         self.marker4 = Image(Point(-100, 150), 'wood.gif') 
         self.marker4.draw(win)
+
+        self.proj5 = Enemy(velocity = 60, height = 450)
+        self.marker5 = Image(Point(-100, 450), 'car_right.gif') 
+        self.marker5.draw(win)
 
     def update(self, dt):
         self.proj.update(dt)
@@ -65,6 +69,12 @@ class EnemyTracker:
         dx4 = self.proj4.getX() - center4.getX()
         dy4 = self.proj4.getY() - center4.getY()
         self.marker4.move(dx4,dy4)
+
+        self.proj5.update(dt)
+        center5 = self.marker5.getAnchor()
+        dx5 = self.proj5.getX() - center5.getX()
+        dy5 = self.proj5.getY() - center5.getY()
+        self.marker5.move(dx5,dy5)
 
     def getX(self):
         #return the current x coordinate of the shot's center 
@@ -180,13 +190,6 @@ def intro(win):
     line(win, 490, 495, 540, 495)        
     #bottom grass section:
     squares(win, 0, 625, 501, 700, 'olive')
-
-
-
-
-    
-
-
 
 class FroggerApp:
     def __init__(self):
